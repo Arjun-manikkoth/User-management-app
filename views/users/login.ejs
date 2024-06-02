@@ -1,0 +1,51 @@
+<%-include("../layouts/header.ejs")-%>
+<script>  
+  function validateform(){  
+  var email=document.form.email.value;  
+  var password=document.form.password.value;  
+  var validRegex =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,4}$/;
+    
+  if (email==null || email==""){  
+      alert("Please enter an email address ")
+      document.form.email.focus();
+    return false;  
+  }else if (email.match(validRegex)) {
+   }  
+   else{
+    alert("Invalid email address!");
+     document.form.email.focus();
+     return false;
+   }
+   if(password==""||password==null){
+    alert("Please enter the password");
+    document.form.password.focus();
+     return false;
+   }
+  
+  }
+  </script>
+<div class="background-signin" >
+  </div>
+  <div class="container text-center"id="box-signin">
+    <h1 id="h1">Sign in</h1>
+  <br>
+    <%if(locals.message){%>
+      <small id="message"><%=message%></small>
+      <%}%>
+    <form name="form" method="post" action="/login" onsubmit="return validateform()">
+      <br>
+      <div>
+        <input type="text" id="placeholder"  name="email" placeholder="Email"/>
+      </div>
+      <div>
+        <input type="password" id="placeholder" name="password" placeholder="Password"/>
+      </div> 
+      <button type="submit" class="btn btn-danger" id="btn-signin" name="login">Sign in</button>
+    </form>
+    <div class="bottom-div">
+      <span id="span-signin">Don't have an account? </span>
+      <a id="link-signup" href="/register">&nbsp;Sign up</a>
+    </div>
+  </div>
+
+<%-include("../layouts/footer.ejs")-%>

@@ -1,0 +1,32 @@
+<%-include('../layouts/header')-%>
+
+<div class="background-signin" >
+</div>
+  <div class="container text-center" id="box-signin" >
+    <h1 id="h1" >Sign up</h1>
+    <%if(locals.message){%>
+      <div id="top-message">
+        <small id="message"><%=message%></small>
+        <a href="/login" id="link-signup">Login</a>
+      </div>   
+      <%}%>
+    <form id="form" method="post" action="/register">
+      <br>
+      <div>
+        <input type="text"  name="name" id="placeholder" placeholder="Name" >
+        <span name="error1" ></span>
+      </div> 
+      <div>
+        <input type="email"  name="email" id="placeholder" placeholder="Email" >
+      </div>    
+      <div>
+        <input type="text"  name="mobile" id="placeholder" placeholder="Mobile" >
+      </div>      
+      <div>
+        <input type="password"  name="password" id="placeholder" placeholder="Password" >
+      </div>  
+      <button type="submit" class="btn btn-danger" id="btn-signup" >Sign up</button>
+    </form>  
+  </div>
+
+  <%-include('../layouts/footer')-%>

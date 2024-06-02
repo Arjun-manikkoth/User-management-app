@@ -1,0 +1,44 @@
+<%-include("../layouts/header.ejs")-%>
+
+<nav class="navbar bg-body-tertiary bg-secondary border-bottom border-body py-1" data-bs-theme="dark">
+  <div class="container-fluid">
+    <button class="button btn btn-secondary ms-4">&#127760; Admin</button>
+    <div>
+      <form action="/admin/home">
+        <input type="text" placeholder="search" name="search">
+        <button type="submit" class="button btn btn-dark">Search</button>
+      </form>
+    </div>
+    <div>
+      <button class="button btn btn-dark btn-sm ms-2"><a href="/admin/adduser"id="buttonadmin">Add User</a></button>
+      <button class="button btn btn-dark btn-sm ms-2"><a href="/admin/logout">Logout</a></button>
+    </div>
+    </form>
+  </div>
+</nav>
+<div class="container text-center mt-5">
+  <table class="table" width="50%">
+    <tr>
+      <th class="tableheading">Name</th>
+      <th class="tableheading">Email</th>
+      <th class="tableheading">Phone.no</th>
+    </tr>
+    <%if(user.length>0){
+      for(let i=0;i<user.length;i++){
+      %>
+    <tr>
+      <td><%=user[i].name %></td>
+      <td><%=user[i].email %></td>
+      <td><%=user[i].mobile %></td>
+      <td><button class="btn btn-primary btn-sm"><a href="/admin/edit-user?id=<%=user[i]._id%>"id="buttonadmin">Edit</a></button>
+        <button class="btn btn-danger btn-sm ms-3"><a href="/admin/delete-user?id=<%=user[i]._id%>"id="buttonadmin">Delete</a></button>
+      </td>
+    </tr>
+    <%} }
+    else{%>
+     <td colspan="5">Data not found</td>
+    <%}%>
+  </table>
+</div>
+
+<%-include("../layouts/footer.ejs")-%>
