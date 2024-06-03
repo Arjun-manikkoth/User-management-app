@@ -15,6 +15,8 @@ app.use("/admin",adminRoute);
 //for user routes
 app.use("/",userRoute);
 
-app.listen(3001,()=>{
+const PORT = process.env.port||3001
+
+app.listen(PORT,()=>{
   console.log("listening to the port")
 })
